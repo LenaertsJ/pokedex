@@ -1,0 +1,29 @@
+.pokedex-app {
+  font-family: "Share Tech Mono", monospace;
+  .link {
+    margin-bottom: 30px;
+    color: rgb(228, 183, 228);
+  }
+  .error {
+    border: 1px dotted red;
+    text-transform: uppercase;
+    padding: 5px;
+    color: red;
+  }
+  .poke-detail {
+    text-align: start;
+    .stats {
+      text-align: center;
+    }
+    .list {
+      display: flex;
+      flex-wrap: wrap;
+      .abilities {
+        border: 1px solid rgb(226, 206, 21);
+      }
+      .moves {
+        border: 1px solid rgb(124, 179, 42);
+      }
+    }
+  }
+}

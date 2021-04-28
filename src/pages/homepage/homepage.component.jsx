@@ -1,6 +1,9 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import PokeGrid from '../../components/poke-grid/poke-grid.component'
+
+import PokeGrid from '../../components/poke-grid.component'
+
+import './homepage.styles.scss';
 
 function Homepage() {
     const [searchInput, setSearchInput] = useState("");
@@ -34,9 +37,12 @@ function Homepage() {
     return (
       <div className="pokedex-app">
         <form onSubmit={handleSubmit}>
-          <input onChange={handleInputChange} value={searchInput} type="text" />
-          <button>Search</button>
+          <div className="field">
+            <input onChange={handleInputChange} value={searchInput} type="text" placeholder="Find a pokéfriend..."/>
+          </div>
+          <button type="submit">search</button>
         </form>
+        {/* <h1 className="subtitle">Poké species</h1> */}
         {isLoading && <p>LOADING...</p>}
         {pokedex && <PokeGrid pokedex={pokedex} />}
       </div>

@@ -2,7 +2,10 @@ import { useParams } from 'react-router-dom'
 import { useState } from 'react'
 import useSWR from 'swr'
 import axios from 'axios'
-import PokeDetail from '../../components/poke-detail/poke-detail.component'
+import { Link } from 'react-router-dom'
+import PokeDetail from '../../components/poke-detail.component'
+
+import './detail-page.styles.scss'
 
 function DetailPage() {
    
@@ -16,11 +19,10 @@ function DetailPage() {
 
     return (
       <div className="pokedex-app">
-        <header>
-          <h1>{name}</h1>
-        </header>
+        <Link className="link" to="/">-- HOME --</Link>
+        <h1 className="subtitle">{name}</h1>
         {isLoading && <p>LOADING...</p>}
-        {error && <p>{error}</p>}
+        {error && <p className="error">{error}</p>}
         {data && <PokeDetail pokemon={data}/>}
       </div>
     );

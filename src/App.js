@@ -10,9 +10,8 @@ function App() {
     <>
       <Router>
         <header>
-          <h1>Pokedex</h1>
+          <h1 className="main-title">pokedex</h1>
         </header>
-        <Link to="/">HOME</Link>
         <Switch>
           <Route exact path="/" component={Homepage} />
           <Route exact path="/detail/:name" component={DetailPage} />
