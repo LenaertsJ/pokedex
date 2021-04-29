@@ -2,6 +2,7 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 
 import PokeGrid from '../../components/poke-grid.component'
+import pokeball from '../../images/pokeball.png'
 
 import './homepage.styles.scss';
 
@@ -17,7 +18,8 @@ function Homepage() {
   
     const handleSubmit = (e) => {
       e.preventDefault();
-      setPokemon(searchInput);
+      const inputLowerCase = searchInput.toLowerCase()
+      setPokemon(inputLowerCase);
     };
   
     useEffect(() => {
@@ -42,8 +44,8 @@ function Homepage() {
           </div>
           <button type="submit">search</button>
         </form>
-        {/* <h1 className="subtitle">Poké species</h1> */}
         {isLoading && <p>LOADING...</p>}
+        {!pokedex && <img src={pokeball} alt="pokeball" className="pokeball"></img>}
         {pokedex && <PokeGrid pokedex={pokedex} />}
       </div>
     );

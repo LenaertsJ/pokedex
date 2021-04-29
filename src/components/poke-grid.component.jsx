@@ -5,7 +5,7 @@ import slugify from 'slugify'
 const PokeGrid = ({pokedex}) => (
     <ul className='poke-grid'>
         {
-            pokedex.map((variety, index) => <li className="list-item" key={index}><Link to={`/detail/${slugify(variety.pokemon.name, {
+            pokedex.map((variety, index) => <li className="list-item" key={index}><Link className="link" to={`/detail/${slugify(variety.pokemon.name, {
                 lower: true,
                 strict: true
             })}`}>{variety.pokemon.name}</Link></li>)
