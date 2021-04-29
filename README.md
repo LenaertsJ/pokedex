@@ -1,3 +1,3 @@
 ### SURGE:
 
-[Pokedex](https://surge.blabla)
+[Pokedex](https://rightful-maid.surge.sh/)
