@@ -8,6 +8,7 @@ import './homepage.styles.scss';
 
 function Homepage() {
     const [searchInput, setSearchInput] = useState("");
+    const [toSearch, setSearch] = useState("");
     const [pokemon, setPokemon] = useState("");
     const [pokedex, setPokeDex] = useState("");
     const [isLoading, setLoading] = useState(false);
@@ -19,22 +20,38 @@ function Homepage() {
     const handleSubmit = (e) => {
       e.preventDefault();
       const inputLowerCase = searchInput.toLowerCase()
-      setPokemon(inputLowerCase);
+      setSearch(inputLowerCase);
     };
   
     useEffect(() => {
-      if (pokemon) {
+      if (toSearch) {
         setLoading(true);
         axios
-          .get(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}/`)
+          .get(`https://pokeapi.co/api/v2/pokemon-species/${toSearch}/`)
           .then((response) => {
-            setPokeDex(response.data.varieties);
+            setPokemon(response.data.varieties);
             setSearchInput("");
           })
           .catch((error) => console.log(error))
           .finally(() => setLoading(false));
       }
-    }, [pokemon]);
+    }, [toSearch]);
+
+    useEffect(() => {
+        setLoading(true);
+        axios
+          .get(`https://pokeapi.co/api/v2/pokemon-species/?offset=0&limit=100`)
+          .then((response) => {
+            console.log(response.data.results)
+            setPokeDex(response.data.results);
+          })
+          .catch((error) => console.log(error))
+          .finally(() => setLoading(false));
+    }, []);
+
+    const handleClickEvent = () => {
+
+    }
   
     return (
       <div className="pokedex-app">
@@ -44,9 +61,9 @@ function Homepage() {
           </div>
           <button type="submit">search</button>
         </form>
+        <img src={pokeball} alt="pokeball" className="pokeball"></img>
         {isLoading && <p>LOADING...</p>}
-        {!pokedex && <img src={pokeball} alt="pokeball" className="pokeball"></img>}
-        {pokedex && <PokeGrid pokedex={pokedex} />}
+        {pokedex && <PokeGrid pokedex={pokedex} pokemon={pokemon} />}
       </div>
     );
 }

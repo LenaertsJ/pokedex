@@ -1,3 +1,3 @@
 ### SURGE:
 
-[Pokedex](https://rightful-maid.surge.sh/)
+[Pokedex](https://poke-garden.surge.sh/)
